@@ -2,21 +2,21 @@ const searchInput = document.getElementById('searchInput');
 const autocomplete = document.getElementById('autocomplete');
 const categoryChips = document.getElementById('categoryChips');
 const unlockResult = document.getElementById('unlockResult');
-const customForm = document.getElementById('customForm');
 const statusIndicator = document.getElementById('statusIndicator');
 
 fetch('/api/status')
   .then((r) => r.json())
   .then((data) => {
-    statusIndicator.textContent = data.app + ' v' + data.version;
+    if (statusIndicator) statusIndicator.textContent = data.app + ' v' + data.version;
   })
   .catch(() => {
-    statusIndicator.textContent = 'offline';
+    if (statusIndicator) statusIndicator.textContent = 'offline';
   });
 
 fetch('/api/professions')
   .then((r) => r.json())
   .then((data) => {
+    if (!categoryChips) return;
     categoryChips.innerHTML = '';
     data.categories.forEach((cat) => {
       const chip = document.createElement('div');
@@ -37,20 +37,22 @@ fetch('/api/professions')
   .catch((err) => console.error('Erro categorias:', err));
 
 let debounceTimer;
-searchInput.addEventListener('input', (e) => {
-  clearTimeout(debounceTimer);
-  const q = e.target.value.trim();
-  if (q.length < 2) {
-    autocomplete.classList.remove('open');
-    return;
-  }
-  debounceTimer = setTimeout(() => {
-    fetch('/api/professions/search?q=' + encodeURIComponent(q))
-      .then((r) => r.json())
-      .then((data) => renderAutocomplete(data.results))
-      .catch((err) => console.error('Erro busca:', err));
-  }, 250);
-});
+if (searchInput) {
+  searchInput.addEventListener('input', (e) => {
+    clearTimeout(debounceTimer);
+    const q = e.target.value.trim();
+    if (q.length < 2) {
+      autocomplete.classList.remove('open');
+      return;
+    }
+    debounceTimer = setTimeout(() => {
+      fetch('/api/professions/search?q=' + encodeURIComponent(q))
+        .then((r) => r.json())
+        .then((data) => renderAutocomplete(data.results))
+        .catch((err) => console.error('Erro busca:', err));
+    }, 250);
+  });
+}
 
 function renderAutocomplete(results) {
   autocomplete.innerHTML = '';
@@ -75,7 +77,7 @@ function renderAutocomplete(results) {
 }
 
 document.addEventListener('click', (e) => {
-  if (!e.target.closest('.search-box')) {
+  if (!e.target.closest('.search-box') && autocomplete) {
     autocomplete.classList.remove('open');
   }
 });
@@ -112,7 +114,7 @@ function renderUnlockResult(data) {
         '<span class="tag">' + w.delay + '</span>' +
         '<span class="tag">' + w.action + '</span></div>'
       ).join('')
-    : '<p style="color:#6b7280">Nenhum workflow padrao.</p>';
+    : '<p style="color:#94a3b8">Nenhum workflow padrão.</p>';
 
   const nextStepsHtml = data.nextSteps.map((s) => '<li>' + s + '</li>').join('');
 
@@ -122,45 +124,10 @@ function renderUnlockResult(data) {
       '<p class="meta">Categoria: ' + prof.category + '</p>' +
       '<div class="result-section"><h4>Paradigmas (' + data.summary.totalParadigms + ')</h4>' + paradigmsHtml + '</div>' +
       '<div class="result-section"><h4>Workflows (' + data.summary.totalWorkflows + ')</h4>' + workflowsHtml + '</div>' +
-      '<div class="result-section"><h4>Proximos Passos</h4><ul>' + nextStepsHtml + '</ul></div>' +
+      '<div class="result-section"><h4>Próximos Passos</h4><ul>' + nextStepsHtml + '</ul></div>' +
     '</div>';
 
   unlockResult.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
-
-customForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  const formData = new FormData(customForm);
-  const payload = {
-    name: formData.get('name'),
-    segment: formData.get('segment'),
-    description: formData.get('description')
-  };
-
-  fetch('/api/engine/custom', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload)
-  })
-    .then((r) => r.json())
-    .then((data) => {
-      if (data.error) {
-        alert('Erro: ' + data.error);
-        return;
-      }
-      renderUnlockResult({
-        profession: data.profession,
-        autoAttendanceParadigms: data.autoAttendanceParadigms,
-        whatsappWorkflows: data.whatsappWorkflows,
-        summary: data.summary,
-        nextSteps: ['Configurar mensagens', 'Ativar workflows', 'Conectar WhatsApp']
-      });
-      customForm.reset();
-    })
-    .catch((err) => {
-      console.error(err);
-      alert('Erro ao criar atendimento');
-    });
-});
 
 console.log('Inova Zap frontend carregado');
