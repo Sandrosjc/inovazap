@@ -1,0 +1,169 @@
+{
+  "version": "1.0.0",
+  "categories": [
+    {
+      "id": "saude",
+      "name": "Saude",
+      "icon": "🩺",
+      "professions": [
+        {
+          "id": "medico",
+          "name": "Medico",
+          "fields": ["CRM", "Especialidade"],
+          "paradigms": [
+            {
+              "id": "triagem_inicial",
+              "name": "Triagem Inicial",
+              "messages": [
+                "Ola! Sou a assistente virtual. Como posso ajudar?",
+                "1 - Agendar consulta",
+                "2 - Remarcar consulta",
+                "3 - Duvidas sobre exames",
+                "4 - Convenios atendidos"
+              ]
+            }
+          ],
+          "workflows": [
+            {
+              "id": "lembrete_24h",
+              "name": "Lembrete 24h antes",
+              "trigger": "appointment_created",
+              "delay": "24h_before",
+              "action": "send_whatsapp_template"
+            }
+          ]
+        },
+        {
+          "id": "dentista",
+          "name": "Dentista",
+          "fields": ["CRO", "Especialidade"],
+          "paradigms": [
+            {
+              "id": "triagem_odonto",
+              "name": "Triagem Odontologica",
+              "messages": [
+                "Ola! Bem-vindo a clinica odontologica",
+                "1 - Agendar avaliacao",
+                "2 - Urgencia",
+                "3 - Limpeza",
+                "4 - Orcamento"
+              ]
+            }
+          ],
+          "workflows": [
+            {
+              "id": "confirmacao_odonto",
+              "name": "Confirmacao de procedimento",
+              "trigger": "appointment_created",
+              "delay": "24h_before",
+              "action": "send_whatsapp_template"
+            }
+          ]
+        },
+        {
+          "id": "psicologo",
+          "name": "Psicologo",
+          "fields": ["CRP", "Abordagem"],
+          "paradigms": [
+            {
+              "id": "acolhimento",
+              "name": "Acolhimento Inicial",
+              "messages": [
+                "Ola! Que bom ter voce aqui",
+                "1 - Agendar primeira sessao",
+                "2 - Informacoes sobre valores",
+                "3 - Sessao online ou presencial"
+              ]
+            }
+          ],
+          "workflows": []
+        }
+      ]
+    },
+    {
+      "id": "juridico",
+      "name": "Juridico",
+      "icon": "⚖️",
+      "professions": [
+        {
+          "id": "advogado",
+          "name": "Advogado",
+          "fields": ["OAB", "Area de Atuacao"],
+          "paradigms": [
+            {
+              "id": "triagem_juridica",
+              "name": "Triagem Juridica",
+              "messages": [
+                "Ola! Sou a assistente juridica virtual",
+                "1 - Agendar consulta",
+                "2 - Urgencia",
+                "3 - Status do processo",
+                "4 - Orcamento"
+              ]
+            }
+          ],
+          "workflows": []
+        }
+      ]
+    },
+    {
+      "id": "varejo",
+      "name": "Varejo",
+      "icon": "🛒",
+      "professions": [
+        {
+          "id": "supermercado",
+          "name": "Supermercado",
+          "fields": ["CNPJ", "Area de Entrega"],
+          "paradigms": [
+            {
+              "id": "catalogo_varejo",
+              "name": "Catalogo e Pedidos",
+              "messages": [
+                "Ola! Bem-vindo ao nosso mercado",
+                "1 - Ver catalogo",
+                "2 - Fazer pedido",
+                "3 - Acompanhar entrega",
+                "4 - Promocoes do dia"
+              ]
+            }
+          ],
+          "workflows": [
+            {
+              "id": "pos_pedido",
+              "name": "Acompanhamento de pedido",
+              "trigger": "order_created",
+              "delay": "immediate",
+              "action": "send_order_status"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "outros",
+      "name": "Outros",
+      "icon": "✨",
+      "professions": [
+        {
+          "id": "personalizado",
+          "name": "Atendimento Personalizado",
+          "fields": ["Segmento"],
+          "paradigms": [
+            {
+              "id": "triagem_generica",
+              "name": "Triagem Generica",
+              "messages": [
+                "Ola! Como podemos ajudar?",
+                "1 - Agendamento",
+                "2 - Informacoes",
+                "3 - Falar com atendente"
+              ]
+            }
+          ],
+          "workflows": []
+        }
+      ]
+    }
+  ]
+}

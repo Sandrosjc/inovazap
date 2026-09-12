@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inova Zap</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">Inova Zap</div>
+    <nav>
+      <a href="#" class="active">Painel</a>
+      <a href="#motor">Motor Dinamico</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <h1>Atendimento, vendas e gestao via WhatsApp</h1>
+      <p>A plataforma multi-segmento para profissionais liberais e comercios.</p>
+    </section>
+
+    <section id="motor" class="motor-section">
+      <h2>Motor Dinamico de Profissoes</h2>
+      <p class="subtitle">Digite sua profissao e desbloqueie seu atendimento automatizado.</p>
+
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Ex.: medico, dentista, advogado..." autocomplete="off" />
+        <div id="autocomplete" class="autocomplete"></div>
+      </div>
+
+      <div id="categoryChips" class="category-chips"></div>
+      <div id="unlockResult" class="unlock-result"></div>
+    </section>
+
+    <section class="custom-section">
+      <h2>Nao encontrou sua profissao?</h2>
+      <p class="subtitle">Crie um atendimento personalizado.</p>
+      <form id="customForm" class="custom-form">
+        <input type="text" name="name" placeholder="Nome do negocio/profissao" required />
+        <input type="text" name="segment" placeholder="Segmento" required />
+        <textarea name="description" placeholder="Descricao (opcional)"></textarea>
+        <button type="submit">Criar Atendimento</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© 2026 Inova Zap</p>
+    <p class="version">v1.0.0 · <span id="statusIndicator">verificando...</span></p>
+  </footer>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>

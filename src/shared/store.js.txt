@@ -1,0 +1,76 @@
+const paradigms = require('../config/paradigms.json');
+
+function getAllProfessions() {
+  const list = [];
+  paradigms.categories.forEach((category) => {
+    category.professions.forEach((profession) => {
+      list.push({
+        ...profession,
+        categoryId: category.id,
+        categoryName: category.name,
+        categoryIcon: category.icon
+      });
+    });
+  });
+  return list;
+}
+
+function searchProfessions(term) {
+  if (!term) return getAllProfessions();
+  const normalized = term.toLowerCase().trim();
+  return getAllProfessions().filter((p) =>
+    p.name.toLowerCase().includes(normalized) ||
+    p.categoryName.toLowerCase().includes(normalized)
+  );
+}
+
+function getProfessionById(id) {
+  return getAllProfessions().find((p) => p.id === id) || null;
+}
+
+function createCustomProfession({ name, segment, description }) {
+  if (!name || !segment) {
+    throw new Error('Nome e segmento sao obrigatorios');
+  }
+  return {
+    id: `custom_${Date.now()}`,
+    name,
+    fields: ['Segmento', 'Descricao'],
+    paradigms: [
+      {
+        id: 'custom_triagem',
+        name: `Triagem personalizada - ${name}`,
+        messages: [
+          `Ola! Bem-vindo(a) ao atendimento de ${name}.`,
+          `Segmento: ${segment}`,
+          description || 'Como podemos ajudar hoje?',
+          '1 - Agendamento',
+          '2 - Informacoes',
+          '3 - Falar com atendente'
+        ]
+      }
+    ],
+    workflows: [
+      {
+        id: 'custom_followup',
+        name: 'Follow-up personalizado',
+        trigger: 'conversation_started',
+        delay: '24h_after',
+        action: 'send_whatsapp_template'
+      }
+    ],
+    categoryId: 'outros',
+    categoryName: 'Personalizado',
+    categoryIcon: '✨',
+    isCustom: true,
+    createdAt: new Date().toISOString()
+  };
+}
+
+module.exports = {
+  paradigms,
+  getAllProfessions,
+  searchProfessions,
+  getProfessionById,
+  createCustomProfession
+};
