@@ -6,346 +6,55 @@
   <title>Inova Zap — Atendimento Inteligente via WhatsApp</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
 
-  <!-- NAVBAR -->
-  <header class="navbar" id="navbar">
-    <div class="nav-container">
-      <a href="/" class="logo">
-        <div class="logo-mark">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-            <path d="M13 2L4.09 12.97A1 1 0 0 0 4.86 14.5H11l-1 7.5 8.91-10.97A1 1 0 0 0 18.14 9.5H12l1-7.5z" fill="currentColor"/>
-          </svg>
-        </div>
-        <span class="logo-text">Inova<span>Zap</span></span>
-      </a>
-      <nav class="nav-links">
-        <a href="#recursos">Recursos</a>
-        <a href="#motor">Motor Dinâmico</a>
-        <a href="#planos">Planos</a>
-        <a href="#afiliados">Afiliados</a>
-      </nav>
-      <div class="nav-actions">
-        <button id="btnLogin" class="btn-nav-ghost">Entrar</button>
-        <button id="btnSignup" class="btn-nav-primary">Começar grátis</button>
-        <div id="userBox" class="user-box" style="display:none;">
-          <img id="userPhoto" class="user-photo" alt="avatar" />
-          <span id="userName" class="user-name"></span>
-          <button id="btnLogout" class="btn-logout">Sair</button>
-        </div>
-      </div>
-    </div>
+  <header class="navbar">
+    <div class="logo">Inova Zap</div>
+    <nav>
+      <a href="#" class="active">Painel</a>
+      <a href="#motor">Motor Dinâmico</a>
+    </nav>
   </header>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-bg-grid"></div>
-    <div class="hero-glow hero-glow-1"></div>
-    <div class="hero-glow hero-glow-2"></div>
-    <div class="hero-container">
-      <a href="#motor" class="hero-badge">
-        <span class="badge-dot"></span>
-        Novo · Motor Dinâmico de Profissões
-        <span class="badge-arrow">→</span>
-      </a>
-      <h1 class="hero-title">
-        Atendimento que <span class="gradient-text">se adapta</span><br>
-        ao seu negócio
-      </h1>
-      <p class="hero-subtitle">
-        Digite sua profissão e o Inova Zap configura automaticamente todo o seu
-        atendimento, agendamento e vendas no WhatsApp. Em menos de 5 minutos.
-      </p>
-      <div class="hero-actions">
-        <button class="btn-hero-primary" onclick="document.getElementById('motor').scrollIntoView({behavior:'smooth'})">
-          Testar grátis agora
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-6-6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-        <a href="#planos" class="btn-hero-secondary">Ver planos</a>
-      </div>
-      <div class="hero-stats">
-        <div class="stat">
-          <strong>+15</strong>
-          <span>segmentos prontos</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat">
-          <strong>5 min</strong>
-          <span>para configurar</span>
-        </div>
-        <div class="stat-divider"></div>
-        <div class="stat">
-          <strong>R$ 0</strong>
-          <span>por mensagem</span>
-        </div>
-      </div>
-    </div>
-  </section>
+  <main>
+    <section class="hero">
+      <h1>Atendimento inteligente<br>via WhatsApp</h1>
+      <p>A plataforma multi-segmento para profissionais liberais e comércios.</p>
+    </section>
 
-  <!-- LOGOS / SOCIAL PROOF -->
-  <section class="logos-section">
-    <p class="logos-text">Usado por profissionais e comércios de todo o Brasil</p>
-    <div class="logos-row">
-      <span>🩺 Médicos</span>
-      <span>⚖️ Advogados</span>
-      <span>💅 Salões</span>
-      <span>🛒 Mercados</span>
-      <span>🍽️ Restaurantes</span>
-      <span>💊 Farmácias</span>
-    </div>
-  </section>
+    <section id="motor" class="motor-section">
+      <h2>Motor Dinâmico de Profissões</h2>
+      <p class="subtitle">Digite sua profissão e desbloqueie seu atendimento automatizado.</p>
 
-  <!-- RECURSOS -->
-  <section id="recursos" class="section">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-tag">Recursos</div>
-        <h2 class="section-title">Tudo em um só lugar.<br>Simples como deve ser.</h2>
-        <p class="section-subtitle">
-          Uma plataforma completa, sem complexidade. Feita para quem não tem tempo a perder.
-        </p>
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Ex.: medico, dentista, advogado..." autocomplete="off" />
+        <div id="autocomplete" class="autocomplete"></div>
       </div>
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon" data-color="purple">🧠</div>
-          <h3>Motor Dinâmico</h3>
-          <p>Escolha sua profissão e receba fluxos de atendimento prontos, configurados em segundos.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon" data-color="blue">📅</div>
-          <h3>Agendamento</h3>
-          <p>Calendário inteligente com lembretes e confirmações automáticas via WhatsApp.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon" data-color="green">🛒</div>
-          <h3>Catálogo & Estoque</h3>
-          <p>Venda por WhatsApp com controle de estoque em tempo real. Sem planilhas.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon" data-color="orange">👥</div>
-          <h3>CRM de Clientes</h3>
-          <p>Histórico, preferências e contatos organizados automaticamente.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon" data-color="pink">🤖</div>
-          <h3>Automação com IA</h3>
-          <p>Respostas inteligentes que entendem o contexto e agem sozinhas.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon" data-color="teal">📊</div>
-          <h3>Métricas em Tempo Real</h3>
-          <p>Dashboards completos de vendas, atendimentos e conversões.</p>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- MOTOR DINÂMICO -->
-  <section id="motor" class="section section-motor">
-    <div class="motor-glow"></div>
-    <div class="container">
-      <div class="section-header">
-        <div class="section-tag">Motor Dinâmico</div>
-        <h2 class="section-title">Digite sua profissão.<br>Receba tudo pronto.</h2>
-        <p class="section-subtitle">
-          Nossa inteligência desbloqueia paradigmas de atendimento e workflows de WhatsApp específicos para você.
-        </p>
-      </div>
-      <div class="motor-wrapper">
-        <div class="search-box">
-          <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          <input type="text" id="searchInput" placeholder="Ex.: médico, dentista, advogado, supermercado..." autocomplete="off" />
-          <div id="autocomplete" class="autocomplete"></div>
-        </div>
-        <div id="categoryChips" class="category-chips"></div>
-        <div id="unlockResult" class="unlock-result"></div>
-      </div>
-    </div>
-  </section>
+      <div id="categoryChips" class="category-chips"></div>
+      <div id="unlockResult" class="unlock-result"></div>
+    </section>
 
-  <!-- PLANOS -->
-  <section id="planos" class="section">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-tag">Planos</div>
-        <h2 class="section-title">Preço justo.<br>Sem surpresas.</h2>
-        <p class="section-subtitle">Comece grátis. Faça upgrade quando crescer. Cancele quando quiser.</p>
-      </div>
-      <div class="plans-grid">
-        <div class="plan-card">
-          <div class="plan-header">
-            <h3>Profissional</h3>
-            <p>Para autônomos e clínicas</p>
-          </div>
-          <div class="plan-price">
-            <span class="currency">R$</span>
-            <span class="amount">97</span>
-            <span class="period">/mês</span>
-          </div>
-          <ul class="plan-features">
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="m5 13 4 4L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> 1 número de WhatsApp</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="m5 13 4 4L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Agendamento ilimitado</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="m5 13 4 4L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Motor Dinâmico completo</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="m5 13 4 4L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> CRM de clientes</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="m5 13 4 4L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Mensagens ilimitadas</li>
-          </ul>
-          <button class="btn-plan" onclick="abrirCadastro()">Começar agora</button>
-        </div>
-        <div class="plan-card plan-destaque">
-          <div class="plan-tag">MAIS POPULAR</div>
-          <div class="plan-header">
-            <h3>Comércio</h3>
-            <p>Para lojas e mercados</p>
-          </div>
-          <div class="plan-price">
-            <span class="currency">R$</span>
-            <span class="amount">197</span>
-            <span class="period">/mês</span>
-          </div>
-          <ul class="plan-features">
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="m5 13 4 4L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Tudo do Profissional</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="m5 13 4 4L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Catálogo de produtos</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="m5 13 4 4L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Controle de estoque</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="m5 13 4 4L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Workflow de pedidos</li>
-            <li><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="m5 13 4 4L19 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Integração com pagamento</li>
-          </ul>
-          <button class="btn-plan btn-plan-primary" onclick="abrirCadastro()">Começar agora</button>
-        </div>
-      </div>
-    </div>
-  </section>
+    <section class="custom-section">
+      <h2>Nao encontrou sua profissao?</h2>
+      <p class="subtitle">Crie um atendimento personalizado.</p>
+      <form id="customForm" class="custom-form">
+        <input type="text" name="name" placeholder="Nome do negocio/profissao" required />
+        <input type="text" name="segment" placeholder="Segmento" required />
+        <textarea name="description" placeholder="Descricao (opcional)"></textarea>
+        <button type="submit">Criar Atendimento</button>
+      </form>
+    </section>
+  </main>
 
-  <!-- AFILIADOS -->
-  <section id="afiliados" class="section section-afiliados">
-    <div class="afiliados-glow"></div>
-    <div class="container">
-      <div class="afiliados-box">
-        <div class="afiliados-text">
-          <div class="section-tag">Programa de Afiliados</div>
-          <h2>Ganhe <span class="gradient-text">30% recorrente</span><br>por cada indicação</h2>
-          <p>
-            Indique o Inova Zap e receba comissão todo mês, enquanto seu indicado continuar assinando.
-            Sem investimento. Sem risco. Só resultado.
-          </p>
-          <div class="afiliados-actions">
-            <button class="btn-hero-primary" onclick="abrirCadastroAfiliado()">
-              Quero ser afiliado
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-6-6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
-          </div>
-        </div>
-        <div class="afiliados-card-visual">
-          <div class="afiliados-card">
-            <div class="afiliados-card-row">
-              <span>Indicações</span>
-              <strong>12</strong>
-            </div>
-            <div class="afiliados-card-row">
-              <span>Comissão/mês</span>
-              <strong class="green">R$ 349</strong>
-            </div>
-            <div class="afiliados-card-progress">
-              <div class="progress-bar"></div>
-            </div>
-            <p class="afiliados-card-foot">Próximo pagamento: <strong>12/10</strong></p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA FINAL -->
-  <section class="section section-cta">
-    <div class="cta-glow"></div>
-    <div class="container">
-      <h2>Pronto para automatizar<br>seu WhatsApp?</h2>
-      <p>Crie sua conta grátis. Comece em menos de 5 minutos.</p>
-      <button class="btn-hero-primary" onclick="abrirCadastro()">
-        Criar conta grátis
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M5 12h14m-6-6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
   <footer class="footer">
-    <div class="footer-container">
-      <div class="footer-brand">
-        <div class="logo">
-          <div class="logo-mark">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-              <path d="M13 2L4.09 12.97A1 1 0 0 0 4.86 14.5H11l-1 7.5 8.91-10.97A1 1 0 0 0 18.14 9.5H12l1-7.5z" fill="currentColor"/>
-            </svg>
-          </div>
-          <span class="logo-text">Inova<span>Zap</span></span>
-        </div>
-        <p>Atendimento inteligente via WhatsApp para profissionais e comércios de todo o Brasil.</p>
-      </div>
-      <div class="footer-col">
-        <h4>Produto</h4>
-        <a href="#recursos">Recursos</a>
-        <a href="#motor">Motor Dinâmico</a>
-        <a href="#planos">Planos</a>
-      </div>
-      <div class="footer-col">
-        <h4>Empresa</h4>
-        <a href="#">Sobre</a>
-        <a href="#">Contato</a>
-        <a href="#">Termos</a>
-      </div>
-      <div class="footer-col">
-        <h4>Parceiros</h4>
-        <a href="#afiliados">Seja afiliado</a>
-        <a href="#">Seja agência</a>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2026 Inova Zap. Todos os direitos reservados.</p>
-      <p><span id="statusIndicator">verificando...</span></p>
-    </div>
+    <p>© 2026 Inova Zap — Todos os direitos reservados</p>
+    <p class="version">v1.0.0 · <span id="statusIndicator">verificando...</span></p>
   </footer>
 
-  <!-- MODAL -->
-  <div id="modalAuth" class="modal" style="display:none;">
-    <div class="modal-backdrop" onclick="fecharModal()"></div>
-    <div class="modal-content">
-      <button class="modal-close" onclick="fecharModal()">×</button>
-      <div class="modal-header">
-        <h2 id="modalTitle">Entrar no Inova Zap</h2>
-        <p id="modalSubtitle">Acesse sua conta ou crie uma nova</p>
-      </div>
-      <button id="modalGoogle" class="btn-google">
-        <svg width="18" height="18" viewBox="0 0 18 18"><path fill="#4285F4" d="M17.64 9.2c0-.64-.06-1.25-.16-1.84H9v3.48h4.84a4.14 4.14 0 0 1-1.8 2.72v2.26h2.92c1.7-1.57 2.68-3.88 2.68-6.62z"/><path fill="#34A853" d="M9 18c2.43 0 4.47-.8 5.96-2.18l-2.92-2.26c-.8.54-1.84.86-3.04.86-2.34 0-4.32-1.58-5.03-3.7H.96v2.32A9 9 0 0 0 9 18z"/><path fill="#FBBC05" d="M3.97 10.72a5.4 5.4 0 0 1 0-3.44V4.96H.96a9 9 0 0 0 0 8.08l3.01-2.32z"/><path fill="#EA4335" d="M9 3.58c1.32 0 2.5.45 3.44 1.34l2.58-2.58A9 9 0 0 0 .96 4.96l3.01 2.32C4.68 5.16 6.66 3.58 9 3.58z"/></svg>
-        Continuar com Google
-      </button>
-      <div class="modal-divider"><span>ou</span></div>
-      <form id="formAuth" class="form-auth">
-        <div class="form-group" id="groupName" style="display:none;">
-          <label>Nome completo</label>
-          <input type="text" id="inputName" placeholder="Seu nome" />
-        </div>
-        <div class="form-group">
-          <label>E-mail</label>
-          <input type="email" id="inputEmail" placeholder="seu@email.com" required />
-        </div>
-        <div class="form-group">
-          <label>Senha</label>
-          <input type="password" id="inputPassword" placeholder="Mínimo 6 caracteres" required />
-        </div>
-        <button type="submit" id="btnSubmitAuth" class="btn-submit">Entrar</button>
-      </form>
-      <p class="modal-footer-text">
-        <span id="textoTroca">Não tem conta?</span>
-        <a href="#" id="linkTroca" onclick="trocarModo(event)">Criar conta grátis</a>
-      </p>
-    </div>
-  </div>
-
-  <script type="module" src="/js/firebase-auth.js"></script>
   <script src="/js/app.js"></script>
-  <script src="/js/modal.js"></script>
 </body>
 </html>
