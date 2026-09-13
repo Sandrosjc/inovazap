@@ -2,6 +2,7 @@ const searchInput = document.getElementById('searchInput');
 const autocomplete = document.getElementById('autocomplete');
 const categoryChips = document.getElementById('categoryChips');
 const unlockResult = document.getElementById('unlockResult');
+const customForm = document.getElementById('customForm');
 const statusIndicator = document.getElementById('statusIndicator');
 
 fetch('/api/status')
@@ -114,7 +115,7 @@ function renderUnlockResult(data) {
         '<span class="tag">' + w.delay + '</span>' +
         '<span class="tag">' + w.action + '</span></div>'
       ).join('')
-    : '<p style="color:#94a3b8">Nenhum workflow padrão.</p>';
+    : '<p style="color:#8a9a94">Nenhum workflow padrao.</p>';
 
   const nextStepsHtml = data.nextSteps.map((s) => '<li>' + s + '</li>').join('');
 
@@ -124,10 +125,47 @@ function renderUnlockResult(data) {
       '<p class="meta">Categoria: ' + prof.category + '</p>' +
       '<div class="result-section"><h4>Paradigmas (' + data.summary.totalParadigms + ')</h4>' + paradigmsHtml + '</div>' +
       '<div class="result-section"><h4>Workflows (' + data.summary.totalWorkflows + ')</h4>' + workflowsHtml + '</div>' +
-      '<div class="result-section"><h4>Próximos Passos</h4><ul>' + nextStepsHtml + '</ul></div>' +
+      '<div class="result-section"><h4>Proximos Passos</h4><ul>' + nextStepsHtml + '</ul></div>' +
     '</div>';
 
   unlockResult.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+if (customForm) {
+  customForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const formData = new FormData(customForm);
+    const payload = {
+      name: formData.get('name'),
+      segment: formData.get('segment'),
+      description: formData.get('description')
+    };
+
+    fetch('/api/engine/custom', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    })
+      .then((r) => r.json())
+      .then((data) => {
+        if (data.error) {
+          alert('Erro: ' + data.error);
+          return;
+        }
+        renderUnlockResult({
+          profession: data.profession,
+          autoAttendanceParadigms: data.autoAttendanceParadigms,
+          whatsappWorkflows: data.whatsappWorkflows,
+          summary: data.summary,
+          nextSteps: ['Configurar mensagens', 'Ativar workflows', 'Conectar WhatsApp']
+        });
+        customForm.reset();
+      })
+      .catch((err) => {
+        console.error(err);
+        alert('Erro ao criar atendimento');
+      });
+  });
 }
 
 console.log('Inova Zap frontend carregado');
