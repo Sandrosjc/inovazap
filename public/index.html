@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Inova Zap — Pare de Perder Clientes no WhatsApp</title>
+<title>Inova Zap — Automação de WhatsApp para Profissionais Liberais</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -17,7 +17,6 @@
     overflow-x: hidden;
   }
 
-  /* NAVBAR SIMPLES */
   .navbar {
     display: flex; justify-content: space-between; align-items: center;
     padding: 20px 40px; max-width: 1300px; margin: 0 auto;
@@ -37,7 +36,6 @@
   }
   .nav-cta:hover { filter: brightness(1.08); transform: translateY(-1px); }
 
-  /* HERO */
   .hero {
     max-width: 1100px; margin: 0 auto;
     padding: 60px 40px 40px;
@@ -55,14 +53,14 @@
     50% { box-shadow: 0 0 0 12px rgba(51,242,160,0); }
   }
   .hero h1 {
-    font-size: 58px; line-height: 1.08; font-weight: 800;
+    font-size: 56px; line-height: 1.08; font-weight: 800;
     margin-bottom: 24px; letter-spacing: -1.5px;
   }
   .hero h1 .green { color: #33F2A0; }
   .hero h1 .purple { color: #9C7BFF; }
   .hero p.sub {
     font-size: 19px; color: #8FA79C; line-height: 1.6;
-    max-width: 680px; margin: 0 auto 40px;
+    max-width: 720px; margin: 0 auto 40px;
   }
   .hero-cta-group {
     display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
@@ -92,6 +90,44 @@
   }
   .mini-checks span { display: flex; align-items: center; gap: 8px; }
   .mini-checks .ok { color: #33F2A0; font-weight: 700; }
+
+  /* SEGMENTOS */
+  .segments {
+    max-width: 1150px; margin: 90px auto;
+    padding: 0 40px;
+  }
+  .segments h2 {
+    font-size: 38px; font-weight: 800; text-align: center;
+    margin-bottom: 12px; letter-spacing: -1px;
+  }
+  .segments h2 .green { color: #33F2A0; }
+  .segments .sub {
+    text-align: center; color: #8FA79C; font-size: 16px;
+    margin-bottom: 50px; max-width: 640px; margin-left: auto; margin-right: auto;
+  }
+  .segments-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+  }
+  .segment {
+    background: rgba(255,255,255,0.035);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 18px; padding: 26px;
+    transition: .3s;
+    display: flex; flex-direction: column;
+  }
+  .segment:hover {
+    border-color: rgba(51,242,160,0.4);
+    transform: translateY(-4px);
+    background: rgba(51,242,160,0.05);
+  }
+  .segment-icon {
+    width: 46px; height: 46px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px; margin-bottom: 16px;
+    background: rgba(51,242,160,0.15);
+  }
+  .segment h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+  .segment p { font-size: 13.5px; color: #8FA79C; line-height: 1.55; }
 
   /* BENEFÍCIOS */
   .benefits {
@@ -226,7 +262,7 @@
     box-shadow: 0 0 80px rgba(51,242,160,0.15);
   }
   .final-cta h2 {
-    font-size: 40px; font-weight: 800; line-height: 1.15;
+    font-size: 38px; font-weight: 800; line-height: 1.15;
     margin-bottom: 18px; letter-spacing: -1px;
   }
   .final-cta h2 .green { color: #33F2A0; }
@@ -234,7 +270,6 @@
     font-size: 17px; color: #8FA79C; margin-bottom: 36px;
   }
 
-  /* FOOTER */
   .footer {
     text-align: center; padding: 40px;
     border-top: 1px solid rgba(255,255,255,0.08);
@@ -242,19 +277,18 @@
   }
 
   @media (max-width: 900px) {
-    .hero h1 { font-size: 38px; }
+    .hero h1 { font-size: 36px; }
     .hero p.sub { font-size: 16px; }
-    .benefits-grid, .proof-grid { grid-template-columns: 1fr; }
+    .segments-grid, .benefits-grid, .proof-grid { grid-template-columns: 1fr; }
     .compare { grid-template-columns: 1fr; }
-    .final-cta h2 { font-size: 28px; }
+    .final-cta h2 { font-size: 26px; }
     .navbar { padding: 16px 20px; }
-    .hero, .benefits, .pain-solution, .social-proof { padding-left: 20px; padding-right: 20px; }
+    .hero, .segments, .benefits, .pain-solution, .social-proof { padding-left: 20px; padding-right: 20px; }
   }
 </style>
 </head>
 <body>
 
-<!-- NAVBAR -->
 <header class="navbar">
   <div class="logo">
     <div class="logo-icon">⚡</div>
@@ -267,24 +301,24 @@
 
 <!-- HERO -->
 <section class="hero">
-  <div class="badge-top">🔥 Mais de 3.200 negócios já automatizaram</div>
+  <div class="badge-top">🔥 Usado por médicos, advogados, dentistas e +50 profissões</div>
 
   <h1>
-    Pare de perder clientes<br>
-    <span class="green">no WhatsApp</span> todos os dias.
+    Sua profissão merece<br>
+    <span class="green">atendimento automático</span> no WhatsApp.
   </h1>
 
   <p class="sub">
-    Enquanto você lê isso, alguém mandou mensagem pro seu concorrente.
-    O Inova Zap responde, vende e agenda <strong>em segundos</strong> — no automático, 24h por dia.
+    Médico, dentista, advogado, psicólogo, contador, arquiteto, consultor, personal, terapeuta, corretor, professor...
+    <strong>Se você atende cliente pelo WhatsApp, o Inova Zap trabalha por você 24h por dia.</strong>
   </p>
 
   <div class="hero-cta-group">
     <button class="btn-primary" onclick="window.open('https://wa.me/5500000000000','_blank')">
-      💬 Começar a vender agora
+      💬 Quero automatizar minha profissão
     </button>
-    <button class="btn-secondary" onclick="document.getElementById('beneficios').scrollIntoView({behavior:'smooth'})">
-      Ver como funciona ↓
+    <button class="btn-secondary" onclick="document.getElementById('segmentos').scrollIntoView({behavior:'smooth'})">
+      Ver para minha área ↓
     </button>
   </div>
 
@@ -295,68 +329,137 @@
   </div>
 </section>
 
+<!-- SEGMENTOS (A MAIORIA) -->
+<section class="segments" id="segmentos">
+  <h2>Feito para a <span class="green">sua profissão</span></h2>
+  <p class="sub">A maioria dos nossos clientes são profissionais liberais. Escolha a sua área e veja como funciona.</p>
+
+  <div class="segments-grid">
+    <div class="segment">
+      <div class="segment-icon">🩺</div>
+      <h3>Médicos e Clínicas</h3>
+      <p>Agenda consultas, confirma presença e envia lembretes. Reduz faltas e libera sua secretária.</p>
+    </div>
+    <div class="segment">
+      <div class="segment-icon">🦷</div>
+      <h3>Dentistas</h3>
+      <p>Marca avaliações, envia orçamento e lembra retorno. Mais procedimentos fechados.</p>
+    </div>
+    <div class="segment">
+      <div class="segment-icon">⚖️</div>
+      <h3>Advogados</h3>
+      <p>Triagem de casos, agendamento de reuniões e follow-up automático. Nunca perde um lead.</p>
+    </div>
+    <div class="segment">
+      <div class="segment-icon">🧠</div>
+      <h3>Psicólogos e Terapeutas</h3>
+      <p>Agenda sessões, confirma horários e envia lembretes. Mais presença, menos faltas.</p>
+    </div>
+    <div class="segment">
+      <div class="segment-icon">📊</div>
+      <h3>Contadores</h3>
+      <p>Atende dúvidas frequentes, coleta documentos e organiza solicitações automaticamente.</p>
+    </div>
+    <div class="segment">
+      <div class="segment-icon">🏗️</div>
+      <h3>Arquitetos e Engenheiros</h3>
+      <p>Qualifica projetos, agenda visitas e envia orçamentos. Você só entra na parte técnica.</p>
+    </div>
+    <div class="segment">
+      <div class="segment-icon">💼</div>
+      <h3>Consultores e Coaches</h3>
+      <p>Agenda sessões, envia materiais e acompanha o progresso. Mais clientes, menos operação.</p>
+    </div>
+    <div class="segment">
+      <div class="segment-icon">🏋️</div>
+      <h3>Personal Trainers</h3>
+      <p>Marca avaliações, cobra mensalidade e envia treino. Você só foca em treinar.</p>
+    </div>
+    <div class="segment">
+      <div class="segment-icon">🏠</div>
+      <h3>Corretores de Imóveis</h3>
+      <p>Qualifica leads, envia fotos e agenda visitas. Atende mais gente com a mesma energia.</p>
+    </div>
+    <div class="segment">
+      <div class="segment-icon">🎓</div>
+      <h3>Professores e Cursos</h3>
+      <p>Matrícula alunos, envia aulas e responde dúvidas. Escala sem contratar equipe.</p>
+    </div>
+    <div class="segment">
+      <div class="segment-icon">💅</div>
+      <h3>Salões e Estética</h3>
+      <p>Agenda horários, confirma e envia promoções. Cadeira cheia todo dia.</p>
+    </div>
+    <div class="segment">
+      <div class="segment-icon">🛒</div>
+      <h3>Comércio e Lojas</h3>
+      <p>Manda catálogo, fecha pedido e recupera carrinho abandonado. Vendas no automático.</p>
+    </div>
+  </div>
+</section>
+
 <!-- BENEFÍCIOS -->
 <section class="benefits" id="beneficios">
-  <h2>Por que <span class="green">todo negócio</span> precisa disso?</h2>
-  <p class="sub">Não é sobre tecnologia. É sobre não perder dinheiro.</p>
+  <h2>Por que <span class="green">todo profissional</span> precisa disso?</h2>
+  <p class="sub">Não é sobre tecnologia. É sobre não perder cliente enquanto você trabalha.</p>
 
   <div class="benefits-grid">
     <div class="benefit">
       <div class="benefit-icon">⚡</div>
       <h3>Responde em 4 segundos</h3>
-      <p>Seu cliente não espera. O Inova Zap responde na hora, mesmo de madrugada, fim de semana ou feriado.</p>
-    </div>
-    <div class="benefit">
-      <div class="benefit-icon">💰</div>
-      <h3>Vende no automático</h3>
-      <p>Apresenta produtos, tira dúvidas, fecha pedido e envia link de pagamento sem você tocar no celular.</p>
+      <p>Seu cliente não espera. O Inova Zap responde na hora, mesmo durante uma consulta, audiência ou atendimento.</p>
     </div>
     <div class="benefit">
       <div class="benefit-icon">📅</div>
       <h3>Agenda sozinho</h3>
-      <p>Marca consultas, confirma horários e ainda lembra o cliente no dia anterior. Menos faltas, mais faturamento.</p>
+      <p>Marca consultas, reuniões e sessões. Confirma horários e ainda lembra o cliente no dia anterior.</p>
     </div>
     <div class="benefit">
       <div class="benefit-icon">🎯</div>
-      <h3>Recupera cliente perdido</h3>
-      <p>Quem parou de responder recebe um follow-up automático. Você recupera vendas que achava perdidas.</p>
+      <h3>Nunca deixa lead esfriar</h3>
+      <p>Todo interessado é atendido e acompanhado até virar cliente. Sem depender da sua memória.</p>
+    </div>
+    <div class="benefit">
+      <div class="benefit-icon">💰</div>
+      <h3>Aumenta seu faturamento</h3>
+      <p>Menos faltas, mais agendamentos, mais vendas. Profissionais que usam faturam em média 40% mais.</p>
+    </div>
+    <div class="benefit">
+      <div class="benefit-icon">🧘</div>
+      <h3>Você trabalha tranquilo</h3>
+      <p>Sem celular apitando durante atendimento. Sem perder cliente por não responder rápido.</p>
     </div>
     <div class="benefit">
       <div class="benefit-icon">📊</div>
       <h3>Mostra o que funciona</h3>
-      <p>Relatórios claros: quantas conversas, quanto vendeu, qual horário tem mais movimento. Tudo em um painel.</p>
-    </div>
-    <div class="benefit">
-      <div class="benefit-icon">🤝</div>
-      <h3>Nunca deixa lead esfriar</h3>
-      <p>Todo interessado é atendido e acompanhado até virar cliente. Sem depender de você lembrar.</p>
+      <p>Relatórios claros: quantos agendamentos, quanto faturou, qual horário tem mais movimento.</p>
     </div>
   </div>
 </section>
 
 <!-- DOR X SOLUÇÃO -->
 <section class="pain-solution">
-  <h2>Você está perdendo dinheiro <span class="red">agora</span>.<br>O Inova Zap <span class="green">resolve</span>.</h2>
+  <h2>Você está perdendo cliente <span class="red">agora</span>.<br>O Inova Zap <span class="green">resolve</span>.</h2>
 
   <div class="compare">
     <div class="compare-col bad">
       <h3>❌ Sem automação</h3>
       <ul>
-        <li><span class="mark">✕</span> Cliente espera horas por uma resposta</li>
-        <li><span class="mark">✕</span> Pedido se perde no meio das conversas</li>
-        <li><span class="mark">✕</span> Atendimento muda conforme o humor do vendedor</li>
-        <li><span class="mark">✕</span> Fim de semana = vendas perdidas</li>
-        <li><span class="mark">✕</span> Cliente fecha com o concorrente que respondeu primeiro</li>
+        <li><span class="mark">✕</span> Cliente manda mensagem durante seu atendimento</li>
+        <li><span class="mark">✕</span> Você responde 3 horas depois e ele já fechou com outro</li>
+        <li><span class="mark">✕</span> Agenda bagunçada, faltas, horários perdidos</li>
+        <li><span class="mark">✕</span> Fim de semana e feriado = oportunidades perdidas</li>
+        <li><span class="mark">✕</span> Você vira refém do WhatsApp</li>
       </ul>
     </div>
     <div class="compare-col good">
       <h3>✅ Com Inova Zap</h3>
       <ul>
-        <li><span class="mark">✓</span> Resposta em segundos, todo dia, toda hora</li>
-        <li><span class="mark">✓</span> Cada conversa vira oportunidade rastreada</li>
-        <li><span class="mark">✓</span> Atendimento padronizado e profissional</li>
-        <li><span class="mark">✓</span> Vende 24h, inclusive sábado e domingo</li>
-        <li><span class="mark">✓</span> Você chega antes e fecha a venda</li>
+        <li><span class="mark">✓</span> Resposta imediata, mesmo durante atendimento</li>
+        <li><span class="mark">✓</span> Cliente atendido em segundos, fecha com você</li>
+        <li><span class="mark">✓</span> Agenda organizada, confirmações automáticas</li>
+        <li><span class="mark">✓</span> Atende 24h, inclusive sábado e domingo</li>
+        <li><span class="mark">✓</span> Você recupera seu tempo e sua paz</li>
       </ul>
     </div>
   </div>
@@ -364,39 +467,39 @@
 
 <!-- PROVA SOCIAL -->
 <section class="social-proof">
-  <h2>Quem usa, <span class="green">não volta atrás</span></h2>
+  <h2>Profissionais que usam, <span class="green">não voltam atrás</span></h2>
 
   <div class="proof-grid">
     <div class="proof">
       <div class="proof-stars">★★★★★</div>
-      <p class="proof-text">"Eu perdia umas 5 consultas por semana por esquecer de confirmar. Agora o Inova Zap faz isso. Minha agenda ficou cheia."</p>
+      <p class="proof-text">"Eu perdia umas 5 consultas por semana por esquecer de confirmar. Agora o Inova Zap faz isso. Minha agenda ficou cheia e minhas faltas caíram 70%."</p>
       <div class="proof-author">
-        <div class="proof-avatar">D</div>
+        <div class="proof-avatar">C</div>
         <div>
           <div class="proof-author-name">Dra. Camila R.</div>
-          <div class="proof-author-role">Clínica odontológica</div>
+          <div class="proof-author-role">Médica dermatologista</div>
         </div>
       </div>
     </div>
     <div class="proof">
       <div class="proof-stars">★★★★★</div>
-      <p class="proof-text">"Triplicou meu faturamento em 2 meses. O bot atende, manda catálogo e o cliente já chega no caixa com o pedido pronto."</p>
-      <div class="proof-author">
-        <div class="proof-avatar">J</div>
-        <div>
-          <div class="proof-author-name">João P.</div>
-          <div class="proof-author-role">Supermercado</div>
-        </div>
-      </div>
-    </div>
-    <div class="proof">
-      <div class="proof-stars">★★★★★</div>
-      <p class="proof-text">"Meu WhatsApp era uma bagunça. Agora cada caso chega triado e eu só atendo quem está pronto pra fechar."</p>
+      <p class="proof-text">"Meu WhatsApp era uma bagunça. Agora cada caso chega triado e eu só atendo quem está pronto pra fechar. Meu faturamento subiu 60%."</p>
       <div class="proof-author">
         <div class="proof-avatar">M</div>
         <div>
-          <div class="proof-author-name">Marcos A.</div>
-          <div class="proof-author-role">Advogado</div>
+          <div class="proof-author-name">Dr. Marcos A.</div>
+          <div class="proof-author-role">Advogado tributarista</div>
+        </div>
+      </div>
+    </div>
+    <div class="proof">
+      <div class="proof-stars">★★★★★</div>
+      <p class="proof-text">"Antes eu respondia mensagem até de madrugada. Agora o bot faz isso e eu só atendo no horário. Minha qualidade de vida mudou."</p>
+      <div class="proof-author">
+        <div class="proof-avatar">J</div>
+        <div>
+          <div class="proof-author-name">Juliana P.</div>
+          <div class="proof-author-role">Psicóloga clínica</div>
         </div>
       </div>
     </div>
@@ -406,7 +509,7 @@
 <!-- CTA FINAL -->
 <section class="final-cta">
   <div class="final-cta-box">
-    <h2>Cada minuto sem automação<br>é <span class="green">dinheiro na mesa</span> do concorrente.</h2>
+    <h2>Cada minuto sem automação<br>é <span class="green">cliente na mão do concorrente</span>.</h2>
     <p>Comece grátis hoje. Sem cartão, sem compromisso, sem enrolação.</p>
     <button class="btn-primary" onclick="window.open('https://wa.me/5500000000000','_blank')">
       💬 Quero começar agora — é grátis
@@ -414,20 +517,10 @@
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer class="footer">
   <p>© 2026 Inova Zap — Todos os direitos reservados</p>
-  <p style="margin-top:8px;">Feito para quem vende de verdade.</p>
+  <p style="margin-top:8px;">Feito para profissionais liberais e negócios que atendem pelo WhatsApp.</p>
 </footer>
 
-<script>
-  // Smooth scroll nos botões internos
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      e.preventDefault();
-      document.querySelector(a.getAttribute('href'))?.scrollIntoView({ behavior: 'smooth' });
-    });
-  });
-</script>
 </body>
 </html>
