@@ -1,67 +1,162 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Inova Zap — Atendimento Inteligente via WhatsApp</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/style.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Inova Zap — Atendimento Inteligente via WhatsApp</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; background: #050B09; color: #EAF7F1; min-height: 100vh; }
+  .navbar { display: flex; justify-content: space-between; align-items: center; padding: 18px 32px; border-bottom: 1px solid rgba(255,255,255,0.09); }
+  .logo { font-weight: 700; font-size: 20px; color: #33F2A0; }
+  .navbar nav { display: flex; gap: 24px; align-items: center; }
+  .navbar a { color: #8FA79C; text-decoration: none; font-size: 14px; }
+  .navbar a.active { color: #33F2A0; }
+  .btn-login { background: #33F2A0; color: #0B3B29; border: none; padding: 10px 18px; border-radius: 10px; font-weight: 600; cursor: pointer; }
+  main { max-width: 1100px; margin: 0 auto; padding: 60px 24px; }
+  .hero h1 { font-size: 42px; line-height: 1.15; margin-bottom: 16px; }
+  .hero p { color: #8FA79C; font-size: 17px; margin-bottom: 48px; }
+  h2 { font-size: 22px; margin-bottom: 12px; }
+  .subtitle { color: #5C6F67; margin-bottom: 24px; }
+  .search-box { position: relative; margin-bottom: 20px; }
+  .search-box input { width: 100%; padding: 16px 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.04); color: #EAF7F1; font-size: 15px; }
+  .search-box input:focus { outline: none; border-color: #33F2A0; }
+  .autocomplete { position: absolute; top: 100%; left: 0; right: 0; background: #081712; border-radius: 12px; margin-top: 6px; max-height: 240px; overflow-y: auto; display: none; z-index: 10; }
+  .autocomplete div { padding: 12px 18px; cursor: pointer; font-size: 14px; }
+  .autocomplete div:hover { background: rgba(51,242,160,0.1); color: #33F2A0; }
+  .category-chips { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 28px; }
+  .chip { padding: 8px 16px; border-radius: 999px; background: rgba(51,242,160,0.1); color: #33F2A0; font-size: 13px; cursor: pointer; border: 1px solid rgba(51,242,160,0.25); }
+  .chip:hover { background: rgba(51,242,160,0.2); }
+  .unlock-result { padding: 20px; border-radius: 14px; background: rgba(51,242,160,0.08); border: 1px solid rgba(51,242,160,0.25); display: none; }
+  .custom-section { margin-top: 60px; }
+  .custom-form { display: flex; flex-direction: column; gap: 12px; max-width: 500px; }
+  .custom-form input, .custom-form textarea { padding: 14px 16px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.04); color: #EAF7F1; font-size: 14px; font-family: inherit; }
+  .custom-form button { background: #33F2A0; color: #0B3B29; border: none; padding: 14px; border-radius: 10px; font-weight: 600; cursor: pointer; font-size: 15px; }
+  .footer { text-align: center; padding: 32px; border-top: 1px solid rgba(255,255,255,0.09); color: #5C6F67; font-size: 13px; margin-top: 80px; }
+</style>
 </head>
 <body>
 
-  <header class="navbar">
-    <div class="logo">Inova Zap</div>
-    <nav>
-      <a href="#" class="active">Painel</a>
-      <a href="#motor">Motor Dinâmico</a>
-      <button id="btnLogin" class="btn-login">Entrar com Google</button>
-      <div id="userBox" class="user-box" style="display:none;">
-        <img id="userPhoto" class="user-photo" alt="foto" />
-        <span id="userName" class="user-name"></span>
-        <button id="btnLogout" class="btn-logout">Sair</button>
-      </div>
-    </nav>
-  </header>
+<header class="navbar">
+  <div class="logo">Inova Zap</div>
+  <nav>
+    <a href="#" class="active">Painel</a>
+    <a href="#motor">Motor Dinâmico</a>
+    <button id="btnLogin" class="btn-login">Entrar</button>
+  </nav>
+</header>
 
-  <main>
-    <section class="hero">
-      <h1>Atendimento inteligente<br>via WhatsApp</h1>
-      <p>A plataforma multi-segmento para profissionais liberais e comércios.</p>
-    </section>
+<main>
+  <section class="hero">
+    <h1>Atendimento inteligente<br>via WhatsApp</h1>
+    <p>A plataforma multi-segmento para profissionais liberais e comércios.</p>
+  </section>
 
-    <section id="motor" class="motor-section">
-      <h2>Motor Dinâmico de Profissões</h2>
-      <p class="subtitle">Digite sua profissão e desbloqueie seu atendimento automatizado.</p>
+  <section id="motor">
+    <h2>Motor Dinâmico de Profissões</h2>
+    <p class="subtitle">Digite sua profissão e desbloqueie seu atendimento automatizado.</p>
 
-      <div class="search-box">
-        <input type="text" id="searchInput" placeholder="Ex.: medico, dentista, advogado..." autocomplete="off" />
-        <div id="autocomplete" class="autocomplete"></div>
-      </div>
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Ex.: medico, dentista, advogado..." autocomplete="off" />
+      <div id="autocomplete" class="autocomplete"></div>
+    </div>
 
-      <div id="categoryChips" class="category-chips"></div>
-      <div id="unlockResult" class="unlock-result"></div>
-    </section>
+    <div id="categoryChips" class="category-chips"></div>
+    <div id="unlockResult" class="unlock-result"></div>
+  </section>
 
-    <section class="custom-section">
-      <h2>Não encontrou sua profissão?</h2>
-      <p class="subtitle">Crie um atendimento personalizado.</p>
-      <form id="customForm" class="custom-form">
-        <input type="text" name="name" placeholder="Nome do negócio/profissão" required />
-        <input type="text" name="segment" placeholder="Segmento" required />
-        <textarea name="description" placeholder="Descrição (opcional)"></textarea>
-        <button type="submit">Criar Atendimento</button>
-      </form>
-    </section>
-  </main>
+  <section class="custom-section">
+    <h2>Não encontrou sua profissão?</h2>
+    <p class="subtitle">Crie um atendimento personalizado.</p>
+    <form id="customForm" class="custom-form">
+      <input type="text" name="name" placeholder="Nome do negócio/profissão" required />
+      <input type="text" name="segment" placeholder="Segmento" required />
+      <textarea name="description" placeholder="Descrição (opcional)"></textarea>
+      <button type="submit">Criar Atendimento</button>
+    </form>
+  </section>
+</main>
 
-  <footer class="footer">
-    <p>© 2026 Inova Zap — Todos os direitos reservados</p>
-    <p class="version">v1.0.0 · <span id="statusIndicator">verificando...</span></p>
-  </footer>
+<footer class="footer">
+  <p>© 2026 Inova Zap — Todos os direitos reservados</p>
+  <p>v1.0.0 · <span id="statusIndicator">online</span></p>
+</footer>
 
-  <script type="module" src="/js/firebase-auth.js"></script>
-  <script src="/js/app.js"></script>
+<script>
+  const profissoes = [
+    { nome: "Médico", segmento: "Saúde", msg: "Olá! Sou assistente virtual da clínica. Gostaria de agendar uma consulta?" },
+    { nome: "Dentista", segmento: "Saúde", msg: "Olá! Posso agendar sua avaliação odontológica. Qual o melhor dia?" },
+    { nome: "Advogado", segmento: "Jurídico", msg: "Olá! Descreva seu caso que vou encaminhar para um advogado especialista." },
+    { nome: "Psicólogo", segmento: "Saúde", msg: "Olá! Vamos agendar sua sessão? Tenho horários disponíveis esta semana." },
+    { nome: "Personal Trainer", segmento: "Fitness", msg: "Olá! Vamos montar seu plano de treino? Qual seu objetivo?" },
+    { nome: "Cabeleireiro", segmento: "Beleza", msg: "Olá! Quer agendar corte, escova ou coloração? Me diz o serviço." },
+    { nome: "Restaurante", segmento: "Alimentação", msg: "Olá! Quer ver nosso cardápio ou fazer um pedido?" },
+    { nome: "Loja de Roupas", segmento: "Varejo", msg: "Olá! Temos novidades na coleção. Quer ver?" },
+    { nome: "Eletricista", segmento: "Serviços", msg: "Olá! Descreva o serviço que precisa que já te passo um orçamento." },
+    { nome: "Contador", segmento: "Financeiro", msg: "Olá! Precisa de ajuda com contabilidade? Me conta seu caso." },
+  ];
+
+  const chips = ["Médico", "Dentista", "Advogado", "Psicólogo", "Personal Trainer", "Cabeleireiro", "Restaurante", "Eletricista"];
+  const chipsEl = document.getElementById("categoryChips");
+  chips.forEach(c => {
+    const el = document.createElement("div");
+    el.className = "chip";
+    el.textContent = c;
+    el.onclick = () => mostrarResultado(c);
+    chipsEl.appendChild(el);
+  });
+
+  const input = document.getElementById("searchInput");
+  const acEl = document.getElementById("autocomplete");
+  const resultEl = document.getElementById("unlockResult");
+
+  input.addEventListener("input", () => {
+    const q = input.value.toLowerCase().trim();
+    acEl.innerHTML = "";
+    if (!q) { acEl.style.display = "none"; return; }
+    const matches = profissoes.filter(p => p.nome.toLowerCase().includes(q));
+    if (!matches.length) { acEl.style.display = "none"; return; }
+    matches.forEach(m => {
+      const d = document.createElement("div");
+      d.textContent = m.nome;
+      d.onclick = () => { input.value = m.nome; acEl.style.display = "none"; mostrarResultado(m.nome); };
+      acEl.appendChild(d);
+    });
+    acEl.style.display = "block";
+  });
+
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest(".search-box")) acEl.style.display = "none";
+  });
+
+  function mostrarResultado(nome) {
+    const p = profissoes.find(x => x.nome.toLowerCase() === nome.toLowerCase());
+    if (!p) {
+      resultEl.style.display = "block";
+      resultEl.innerHTML = `<strong>${nome}</strong> ainda não está na base. Use o formulário abaixo para criar um atendimento personalizado.`;
+      return;
+    }
+    resultEl.style.display = "block";
+    resultEl.innerHTML = `
+      <strong style="color:#33F2A0; font-size:16px;">${p.nome}</strong>
+      <p style="margin:8px 0 4px; color:#8FA79C; font-size:13px;">Segmento: ${p.segmento}</p>
+      <p style="margin:8px 0; font-size:14px;">${p.msg}</p>
+      <a href="https://wa.me/5500000000000?text=${encodeURIComponent(p.msg)}" target="_blank" style="display:inline-block; margin-top:10px; background:#33F2A0; color:#0B3B29; padding:10px 18px; border-radius:8px; text-decoration:none; font-weight:600; font-size:13px;">Testar no WhatsApp</a>
+    `;
+  }
+
+  document.getElementById("customForm").addEventListener("submit", (e) => {
+    e.preventDefault();
+    alert("Atendimento criado! (integração com backend pendente)");
+  });
+
+  document.getElementById("btnLogin").addEventListener("click", () => {
+    alert("Login será integrado em breve.");
+  });
+</script>
+
 </body>
 </html>
