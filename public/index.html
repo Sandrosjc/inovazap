@@ -8,8 +8,39 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css" />
+
+  <style>
+    /* ===== BANNER DE IMAGEM ===== */
+    .banner-imagem {
+      display: block;
+      width: 100%;
+      background: #000;
+      text-align: center;
+      line-height: 0;
+    }
+    .banner-imagem img {
+      width: 100%;
+      max-width: 1400px;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      cursor: pointer;
+      transition: opacity 0.3s ease;
+    }
+    .banner-imagem img:hover {
+      opacity: 0.92;
+    }
+  </style>
 </head>
 <body>
+
+  <!-- ===== BANNER CLICÁVEL COM A IMAGEM ===== -->
+  <a href="https://wa.me/5500000000000" target="_blank" class="banner-imagem">
+    <img
+      src="faca-em-altissima-resolucao-so-mehorando_17BHWc2DVhmvjTD5ba3_Mg_wcQlTYq5AeY3BDpltS2A.jpg"
+      alt="Inova Zap — Atendimento Inteligente via WhatsApp"
+    />
+  </a>
 
   <header class="navbar">
     <div class="logo">Inova Zap</div>
@@ -45,12 +76,12 @@
     </section>
 
     <section class="custom-section">
-      <h2>Nao encontrou sua profissao?</h2>
+      <h2>Não encontrou sua profissão?</h2>
       <p class="subtitle">Crie um atendimento personalizado.</p>
       <form id="customForm" class="custom-form">
-        <input type="text" name="name" placeholder="Nome do negocio/profissao" required />
+        <input type="text" name="name" placeholder="Nome do negócio/profissão" required />
         <input type="text" name="segment" placeholder="Segmento" required />
-        <textarea name="description" placeholder="Descricao (opcional)"></textarea>
+        <textarea name="description" placeholder="Descrição (opcional)"></textarea>
         <button type="submit">Criar Atendimento</button>
       </form>
     </section>
