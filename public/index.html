@@ -7,13 +7,49 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     html, body { height: 100%; background: #000; overflow: hidden; }
-    a { display: block; width: 100vw; height: 100vh; }
-    img { width: 100%; height: 100%; object-fit: contain; cursor: pointer; display: block; }
+    .wrap {
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    img {
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      display: block;
+    }
+    area { cursor: pointer; }
   </style>
 </head>
 <body>
-  <a href="https://wa.me/5500000000000" target="_blank">
-    <img src="faca-em-altissima-resolucao-so-mehorando_17BHWc2DVhmvjTD5ba3_Mg_wcQlTYq5AeY3BDpltS2A.jpg" alt="Inova Zap">
-  </a>
+  <div class="wrap">
+    <img
+      src="faca-em-altissima-resolucao-so-mehorando_17BHWc2DVhmvjTD5ba3_Mg_wcQlTYq5AeY3BDpltS2A.jpg"
+      alt="Inova Zap"
+      usemap="#mapa"
+    />
+  </div>
+
+  <map name="mapa">
+    <!-- 🔽 AQUI VOCÊ DEFINE AS ÁREAS CLICÁVEIS 🔽 -->
+
+    <!-- Exemplo: botão "COMEÇAR A VENDER AGORA" no topo direito -->
+    <area shape="rect" coords="920,30,1180,110" href="https://wa.me/5500000000000" target="_blank" alt="Começar">
+
+    <!-- Exemplo: botão verde grande "COMEÇAR A VENDER AGORA (GRÁTIS)" -->
+    <area shape="rect" coords="300,470,780,570" href="https://wa.me/5500000000000" target="_blank" alt="Começar grátis">
+
+    <!-- Exemplo: card "Clínicas e Consultórios" -->
+    <area shape="rect" coords="280,940,660,1180" href="https://wa.me/5500000000000" target="_blank" alt="Clínicas">
+
+    <!-- Exemplo: card "Supermercados e Comércio" -->
+    <area shape="rect" coords="700,940,1080,1180" href="https://wa.me/5500000000000" target="_blank" alt="Comércio">
+
+    <!-- Exemplo: card "Profissionais e Prestadores" -->
+    <area shape="rect" coords="1120,940,1500,1180" href="https://wa.me/5500000000000" target="_blank" alt="Profissionais">
+  </map>
 </body>
 </html>
