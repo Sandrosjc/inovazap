@@ -3,96 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Inova Zap — Atendimento Inteligente via WhatsApp</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/style.css" />
-
+  <title>Inova Zap</title>
   <style>
-    /* ===== BANNER DE IMAGEM ===== */
-    .banner-imagem {
-      display: block;
-      width: 100%;
-      background: #000;
-      text-align: center;
-      line-height: 0;
-    }
-    .banner-imagem img {
-      width: 100%;
-      max-width: 1400px;
-      height: auto;
-      display: block;
-      margin: 0 auto;
-      cursor: pointer;
-      transition: opacity 0.3s ease;
-    }
-    .banner-imagem img:hover {
-      opacity: 0.92;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; background: #000; overflow: hidden; }
+    a { display: block; width: 100vw; height: 100vh; }
+    img { width: 100%; height: 100%; object-fit: contain; cursor: pointer; display: block; }
   </style>
 </head>
 <body>
-
-  <!-- ===== BANNER CLICÁVEL COM A IMAGEM ===== -->
-  <a href="https://wa.me/5500000000000" target="_blank" class="banner-imagem">
-    <img
-      src="faca-em-altissima-resolucao-so-mehorando_17BHWc2DVhmvjTD5ba3_Mg_wcQlTYq5AeY3BDpltS2A.jpg"
-      alt="Inova Zap — Atendimento Inteligente via WhatsApp"
-    />
+  <a href="https://wa.me/5500000000000" target="_blank">
+    <img src="faca-em-altissima-resolucao-so-mehorando_17BHWc2DVhmvjTD5ba3_Mg_wcQlTYq5AeY3BDpltS2A.jpg" alt="Inova Zap">
   </a>
-
-  <header class="navbar">
-    <div class="logo">Inova Zap</div>
-    <nav>
-      <a href="#" class="active">Painel</a>
-      <a href="#motor">Motor Dinâmico</a>
-      <button id="btnLogin" class="btn-login">Entrar com Google</button>
-      <div id="userBox" class="user-box" style="display:none;">
-        <img id="userPhoto" class="user-photo" alt="foto" />
-        <span id="userName" class="user-name"></span>
-        <button id="btnLogout" class="btn-logout">Sair</button>
-      </div>
-    </nav>
-  </header>
-
-  <main>
-    <section class="hero">
-      <h1>Atendimento inteligente<br>via WhatsApp</h1>
-      <p>A plataforma multi-segmento para profissionais liberais e comércios.</p>
-    </section>
-
-    <section id="motor" class="motor-section">
-      <h2>Motor Dinâmico de Profissões</h2>
-      <p class="subtitle">Digite sua profissão e desbloqueie seu atendimento automatizado.</p>
-
-      <div class="search-box">
-        <input type="text" id="searchInput" placeholder="Ex.: medico, dentista, advogado..." autocomplete="off" />
-        <div id="autocomplete" class="autocomplete"></div>
-      </div>
-
-      <div id="categoryChips" class="category-chips"></div>
-      <div id="unlockResult" class="unlock-result"></div>
-    </section>
-
-    <section class="custom-section">
-      <h2>Não encontrou sua profissão?</h2>
-      <p class="subtitle">Crie um atendimento personalizado.</p>
-      <form id="customForm" class="custom-form">
-        <input type="text" name="name" placeholder="Nome do negócio/profissão" required />
-        <input type="text" name="segment" placeholder="Segmento" required />
-        <textarea name="description" placeholder="Descrição (opcional)"></textarea>
-        <button type="submit">Criar Atendimento</button>
-      </form>
-    </section>
-  </main>
-
-  <footer class="footer">
-    <p>© 2026 Inova Zap — Todos os direitos reservados</p>
-    <p class="version">v1.0.0 · <span id="statusIndicator">verificando...</span></p>
-  </footer>
-
-  <script type="module" src="/js/firebase-auth.js"></script>
-  <script src="/js/app.js"></script>
 </body>
 </html>
